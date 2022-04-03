@@ -1,11 +1,10 @@
-import { Container } from "@mui/material";
-import { styled } from "@mui/system";
 import * as React from "react";
+import Banner from "components/Banner/Banner";
 
 export default function Home(props) {
   return (
-    <>
-      <h1>To work on this</h1>
-    </>
+    <div>
+      <Banner />
+    </div>
   );
 }
