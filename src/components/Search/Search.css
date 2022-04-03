@@ -1,0 +1,12 @@
+.searchField {
+    flex-grow: 1;
+    width:0;
+    border:none;
+    outline:none;
+    padding:20px;
+    border-radius: 400px;
+    height: 40px;
+    color:gray;
+    font-size: 16px;
+    letter-spacing: 1px;
+}

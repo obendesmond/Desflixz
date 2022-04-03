@@ -1,11 +1,11 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Box, Button } from "@mui/material";
-import { styled } from "@mui/system";
+
+import logo from "assets/logo.png";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -29,10 +29,10 @@ export default function Nav(props) {
           <Box sx={{ flexGrow: 1 }}>
             <Toolbar>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+                src={logo}
                 alt="Netflix Logo"
                 style={{
-                  height: "30px",
+                  height: "40px",
                   objectFit: "contain",
                 }}
               />
