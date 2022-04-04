@@ -1,0 +1,22 @@
+.percentContainer {
+    margin: -20px 0 0 20px;
+    align-self: flex-start;
+    display: grid;
+    width: fit-content;
+}
+.progress {
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: black;
+    grid-column: 1;
+    grid-row: 1;
+}
+.percent {
+    grid-column: 1;
+    grid-row: 1;
+    position: absolute;
+    color:white;
+    align-self: center;
+    justify-self: center;
+    font-size: 13px;
+}

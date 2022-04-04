@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Grid } from "@mui/material";
 import "./Banner.css";
 import Search from "components/Search/Search";
-import requests from "./Requests";
-import axios from "axios/axios";
+import axios from "axiosRequests/axios";
 import PlayCircleFilledWhiteOutlinedIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
+import requests from "axiosRequests/Requests";
 
 function Banner() {
   const [movie, setMovie] = useState([]);
-  const [beginingPoint] = useState("https://image.tmdb.org/t/p/original/");
+  const baseURL = "https://image.tmdb.org/t/p/original/";
+  const imgDefault =
+    "https://www.renderhub.com/renderhub/black-panther-movie-poster-3d-wallpaper/black-panther-movie-poster-3d-wallpaper_1920x1080.jpg";
 
   useEffect(() => {
     async function fetchData() {
@@ -27,9 +29,11 @@ function Banner() {
     <div
       className="banner"
       style={{
-        background: `linear-gradient(rgba(41, 0, 0, 0.6), rgba(95, 10, 0, 0.7)), url("${
-          beginingPoint + movie?.backdrop_path
+        background: `linear-gradient(rgba(41, 0, 0, 0.6), rgba(95, 10, 0, 0.6)), url("${
+          // baseURL + movie?.backdrop_path
+          imgDefault
         }")`,
+        backgroundPosition: "center 15%",
       }}
     >
       <Container sx={{ pt: "30px" }}>
