@@ -15,6 +15,7 @@
     flex-grow: 1;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .cardMenu {
@@ -24,6 +25,7 @@
     font-size: 20px;
     margin: 5px;
     padding: 2px;
+    cursor: pointer;
 }
 .cardMenu:hover {
     background-color: rgba(238, 0, 0, 0.2);
@@ -36,6 +38,7 @@
 }
 .cardContent h3{
     font-size: 14px;
+    cursor: pointer;
 }
 
 .cardContent h3:hover {

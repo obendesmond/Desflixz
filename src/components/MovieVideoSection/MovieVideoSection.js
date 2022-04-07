@@ -1,38 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "@mui/material";
-import SingleCard from "components/SingleCard/SingleCard";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "./MovieCardSection.css";
 import axios from "axiosRequests/axios";
+import SingleCardVideo from "components/SingleCard/SingleCardVideo";
+import Slider from "react-slick/lib/slider";
+import "./MovieVideoSection.css";
 
-export default function MovieCardSection({ title, fetchURL }) {
+function MovieVideoSection({ title, fetchURL }) {
   const [movies, setMovies] = useState([]);
+
   const baseURL = "https://image.tmdb.org/t/p/original/";
+  const imgDefault =
+    "https://www.renderhub.com/renderhub/black-panther-movie-poster-3d-wallpaper/black-panther-movie-poster-3d-wallpaper_1920x1080.jpg";
 
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 7,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
     lazyLoad: true,
-    centerMode: true,
-    centerPadding: "60px",
     swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 2,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 2,
         },
       },
       {
@@ -45,7 +43,6 @@ export default function MovieCardSection({ title, fetchURL }) {
         breakpoint: 400,
         settings: {
           slidesToShow: 1,
-          // centerMode: false,
         },
       },
       {
@@ -66,12 +63,26 @@ export default function MovieCardSection({ title, fetchURL }) {
     fetchData();
   }, [fetchURL]);
 
+  console.log(movies);
+
   return (
-    <Container maxWidth="xl" className="sectionContainer">
-      <h2>{title}</h2>
+    <div
+      className="sectionContainer"
+      style={{
+        background: `linear-gradient(rgba(255, 255, 255,0.3), rgba(0, 0, 0, 0.9)), url("${
+          // baseURL + movie?.backdrop_path
+          imgDefault
+        }")`,
+        backgroundPosition: "center 15%",
+      }}
+    >
+      <div className="sectionSubContainer"></div>
+      <div className="titleContainer">
+        <h2 className="sectionTitle">{title}</h2>
+      </div>
       <Slider {...settings}>
         {movies?.map((movie, index) => (
-          <SingleCard
+          <SingleCardVideo
             image={`${baseURL + (movie.poster_path || movie.backdrop_path)}`}
             title={movie.name || movie.title}
             date={movie.first_air_date || movie.release_date}
@@ -87,6 +98,8 @@ export default function MovieCardSection({ title, fetchURL }) {
           />
         ))}
       </Slider>
-    </Container>
+    </div>
   );
 }
+
+export default MovieVideoSection;
