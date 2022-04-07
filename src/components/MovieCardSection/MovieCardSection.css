@@ -3,3 +3,17 @@
     border:"1px solid black";
     /* background-color: rgba(0, 0, 0, 0.548); */
 }
+
+.cardTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px 30px 40px; 
+}
+.cardSectionTitle {
+    /* margin:0 0 0px 40px; */
+    color: black;
+}
+.cardTitleBtn{
+    margin-right: 40px;
+}

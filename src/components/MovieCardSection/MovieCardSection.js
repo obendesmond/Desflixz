@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import SingleCard from "components/SingleCard/SingleCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -68,7 +68,12 @@ export default function MovieCardSection({ title, fetchURL }) {
 
   return (
     <Container maxWidth="xl" className="sectionContainer">
-      <h2>{title}</h2>
+      <div className="cardTitleContainer">
+        <h2 className="cardSectionTitle">{title}</h2>
+        <Button className="cardTitleBtn" variant="contained" color="secondary">
+          View All
+        </Button>
+      </div>
       <Slider {...settings}>
         {movies?.map((movie, index) => (
           <SingleCard

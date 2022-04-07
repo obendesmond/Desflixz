@@ -2,11 +2,18 @@ import * as React from "react";
 import LinearScaleIcon from "@mui/icons-material/LinearScale";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "./SingleCardVideo.css";
-import styled from "@emotion/styled";
 
-export default function SingleCard({ image, title, date }) {
+export default function SingleCard({
+  image,
+  title,
+  date,
+  handleBgImageChange,
+}) {
   return (
-    <div className="cardVideoContainer">
+    <div
+      className="cardVideoContainer"
+      onMouseEnter={() => handleBgImageChange(image)}
+    >
       <div className="videoImageContainer">
         <LinearScaleIcon
           fontSize="medium"
@@ -22,17 +29,7 @@ export default function SingleCard({ image, title, date }) {
       <div className="cardVideoContent">
         <h3>{title}</h3>
         <h4>{date}</h4>
-        <Button>Click Me!</Button>
       </div>
     </div>
   );
 }
-
-const Button = styled.button`
-  color: white;
-  padding: 8px;
-  border-radius: 5px;
-  border: none;
-  background-color: red;
-  width: 90%;
-`;

@@ -1,16 +1,24 @@
 .sectionContainer {
     padding: 40px 0 40px 0;
+    background-size: contain;
+    background-repeat: repeat;
     /* background-color: rgba(0, 0, 0, 0.548); */
 }
 
 .sectionTitle {
-    padding:0 0 0px 40px;
+    /* margin:0 0 0px 40px; */
     color: white;
 }
 
-/* .titleContainer{
-    border:1px solid red;
-} */
+.titleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px 0 40px; 
+}
+.titleBtn{
+    margin-right: 40px;
+}
 
 .sectionSubContainer {
     width: 100%;

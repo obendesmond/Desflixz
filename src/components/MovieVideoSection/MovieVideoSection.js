@@ -3,13 +3,15 @@ import axios from "axiosRequests/axios";
 import SingleCardVideo from "components/SingleCard/SingleCardVideo";
 import Slider from "react-slick/lib/slider";
 import "./MovieVideoSection.css";
+import { Button } from "@mui/material";
 
 function MovieVideoSection({ title, fetchURL }) {
   const [movies, setMovies] = useState([]);
+  const [bgImage, setBgImage] = useState(
+    "https://www.renderhub.com/renderhub/black-panther-movie-poster-3d-wallpaper/black-panther-movie-poster-3d-wallpaper_1920x1080.jpg"
+  );
 
   const baseURL = "https://image.tmdb.org/t/p/original/";
-  const imgDefault =
-    "https://www.renderhub.com/renderhub/black-panther-movie-poster-3d-wallpaper/black-panther-movie-poster-3d-wallpaper_1920x1080.jpg";
 
   const settings = {
     dots: false,
@@ -63,7 +65,9 @@ function MovieVideoSection({ title, fetchURL }) {
     fetchData();
   }, [fetchURL]);
 
-  console.log(movies);
+  const handleBgImageChange = img => {
+    setBgImage(img);
+  };
 
   return (
     <div
@@ -71,14 +75,19 @@ function MovieVideoSection({ title, fetchURL }) {
       style={{
         background: `linear-gradient(rgba(255, 255, 255,0.3), rgba(0, 0, 0, 0.9)), url("${
           // baseURL + movie?.backdrop_path
-          imgDefault
+          bgImage
         }")`,
-        backgroundPosition: "center 15%",
+        backgroundPosition: "15% 15%",
       }}
     >
+      {/* cloud */}
       <div className="sectionSubContainer"></div>
+
       <div className="titleContainer">
         <h2 className="sectionTitle">{title}</h2>
+        <Button className="titleBtn" variant="contained" color="secondary">
+          View All
+        </Button>
       </div>
       <Slider {...settings}>
         {movies?.map((movie, index) => (
@@ -95,6 +104,7 @@ function MovieVideoSection({ title, fetchURL }) {
                 : "#E42E19"
             }
             key={index}
+            handleBgImageChange={handleBgImageChange}
           />
         ))}
       </Slider>
