@@ -3,10 +3,11 @@ import Banner from "components/Banner/Banner";
 import MovieCardSection from "components/MovieCardSection/MovieCardSection";
 import requests from "axiosRequests/Requests";
 import MovieVideoSection from "components/MovieVideoSection/MovieVideoSection";
+import Layout from "components/Layout";
 
 export default function Home(props) {
   return (
-    <div>
+    <Layout>
       <Banner />
       <MovieCardSection
         title="Trending Now"
@@ -20,6 +21,6 @@ export default function Home(props) {
         title="Trending Now"
         fetchURL={requests.fetchTrending}
       />
-    </div>
+    </Layout>
   );
 }

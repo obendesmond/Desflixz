@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container } from "@mui/material";
-import SingleCard from "components/SingleCard/SingleCard";
+import { Container } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./MovieCardSection.css";
+import "./MovieCarousel.css";
 import axios from "axiosRequests/axios";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
@@ -19,23 +18,38 @@ const NextBtn = ({ className, onClick }) => (
   </div>
 );
 
-export default function MovieCardSection({ title, fetchURL }) {
+export default function MovieCarousel({ title, fetchURL }) {
   const [movies, setMovies] = useState([]);
   const baseURL = "https://image.tmdb.org/t/p/original/";
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    slidesToShow: 7,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
     lazyLoad: true,
     prevArrow: <PreviousBtn />,
     nextArrow: <NextBtn />,
-    centerMode: true,
-    centerPadding: "60px",
     swipeToSlide: true,
+    customPaging: i => (
+      <div>
+        <img
+          style={{
+            width: "50px",
+            height: "50px",
+            objectFit: "cover",
+            borderRadius: "10px",
+          }}
+          src={`${
+            baseURL + (movies[i].poster_path || movies[i].backdrop_path)
+          }`}
+          alt={i}
+        />
+      </div>
+    ),
+    dotsClass: "slick-dots custom-indicator",
     responsive: [
       {
         breakpoint: 1024,
@@ -81,29 +95,17 @@ export default function MovieCardSection({ title, fetchURL }) {
   }, [fetchURL]);
 
   return (
-    <Container maxWidth="xl" className="sectionContainer">
-      <div className="cardTitleContainer">
-        <h2 className="cardSectionTitle">{title}</h2>
-        <Button className="cardTitleBtn" variant="contained" color="secondary">
-          View All
-        </Button>
-      </div>
+    <Container maxWidth="lg" className="carouselContainer">
       <Slider {...settings}>
         {movies?.map((movie, index) => (
-          <SingleCard
-            image={`${baseURL + (movie.poster_path || movie.backdrop_path)}`}
-            title={movie.name || movie.title}
-            date={movie.first_air_date || movie.release_date}
-            percent={movie.vote_average * 10}
-            color={
-              movie.vote_average > 7
-                ? "#63C775"
-                : movie.vote_average > 4
-                ? "#D2D535"
-                : "#E42E19"
-            }
-            key={index}
-          />
+          <div key={index}>
+            <img
+              key={index}
+              src={`${baseURL + (movie.poster_path || movie.backdrop_path)}`}
+              alt=""
+              style={{ width: "100%", height: "50vh", objectFit: "cover" }}
+            />
+          </div>
         ))}
       </Slider>
     </Container>

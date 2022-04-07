@@ -4,6 +4,18 @@ import SingleCardVideo from "components/SingleCard/SingleCardVideo";
 import Slider from "react-slick/lib/slider";
 import "./MovieVideoSection.css";
 import { Button } from "@mui/material";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+
+const PreviousBtn = ({ className, onClick }) => (
+  <div className={className} onClick={onClick}>
+    <ArrowBackIos style={{ color: "black", fontSize: "30px" }} />
+  </div>
+);
+const NextBtn = ({ className, onClick }) => (
+  <div className={className} onClick={onClick}>
+    <ArrowForwardIos style={{ color: "black", fontSize: "30px" }} />
+  </div>
+);
 
 function MovieVideoSection({ title, fetchURL }) {
   const [movies, setMovies] = useState([]);
@@ -21,6 +33,8 @@ function MovieVideoSection({ title, fetchURL }) {
     autoplay: true,
     speed: 1000,
     lazyLoad: true,
+    prevArrow: <PreviousBtn />,
+    nextArrow: <NextBtn />,
     swipeToSlide: true,
     responsive: [
       {

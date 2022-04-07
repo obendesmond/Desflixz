@@ -1,0 +1,44 @@
+.carouselContainer {
+    padding:40px;
+    border:"1px solid black";
+    /* background-color: rgba(0, 0, 0, 0.548); */
+}
+
+.custom-indicator {
+    /* border:1px solid red; */
+    bottom: -70px;
+}
+/* the li of this class is each small div that has the small image */
+.custom-indicator li {
+    width:50px;
+    height: 50px;
+    filter: grayscale(100%);
+    transition: 0.5s ease-in-out;
+}
+.custom-indicator li.slick-active {
+    transform: translateY(-10px);
+    filter: grayscale(0%);
+}
+
+.slick-arrow.slick-prev, .slick-arrow.slick-next {
+    background:#fcfcfc;
+    width: 47px;
+    height: 104px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slick-next::before, .slick-prev::before {
+    display: none;
+}
+.slick-prev{
+    left:0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.slick-next{
+    right:0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}

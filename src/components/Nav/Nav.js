@@ -6,6 +6,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Box, Button } from "@mui/material";
 
 import logo from "assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -20,20 +21,56 @@ function ElevationScroll(props) {
   });
 }
 
-export default function Nav(props) {
-  return (
+export default function Nav({ isLogin, ...rest }) {
+  const navigate = useNavigate();
+
+  return isLogin ? (
+    <div
+      style={{
+        position: "absolute",
+        padding: "20px 50px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignContent: "center",
+        width: "100vw",
+        //   border: "2px solid red",
+      }}
+    >
+      <img
+        onClick={() => navigate("/")}
+        src={logo}
+        alt="Netflix Logo"
+        style={{
+          height: "40px",
+          objectFit: "contain",
+          cursor: "pointer",
+        }}
+      />
+      <Button
+        style={{ marginRight: "100px", height: "35px" }}
+        variant="contained"
+        disableElevation
+        color="secondary"
+        onClick={() => navigate("/account")}
+      >
+        Account
+      </Button>
+    </div>
+  ) : (
     <>
       <CssBaseline />
-      <ElevationScroll {...props}>
+      <ElevationScroll {...rest}>
         <AppBar>
           <Box sx={{ flexGrow: 1 }}>
             <Toolbar>
               <img
+                onClick={() => navigate("/")}
                 src={logo}
                 alt="Netflix Logo"
                 style={{
                   height: "40px",
                   objectFit: "contain",
+                  cursor: "pointer",
                 }}
               />
               <Box sx={{ flexGrow: "1" }} />
