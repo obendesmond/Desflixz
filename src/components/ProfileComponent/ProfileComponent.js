@@ -36,9 +36,9 @@ function ProfileComponent() {
       <div className="subscriptionContainer">
         <p className="renewDate">Renewal date: 04/03/2021</p>
 
-        {sub("Netflix Standard", "1080p")}
-        {sub("Netflix Basic", "480p")}
-        {sub("Netflix Premium", "4k+HDR")}
+        {sub("Desflixz Standard", "1080p")}
+        {sub("Desflixz Basic", "480p")}
+        {sub("Desflixz Premium", "4k+HDR")}
 
         <Button
           onClick={handleLogout}
