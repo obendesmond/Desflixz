@@ -1,6 +1,6 @@
 .authContainer {
     background-color: rgba(0, 0, 0, 0.8);
-    padding:20px;
+    padding:20px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,17 +10,21 @@
 }
 
 .authContainer input {
-    padding:12px;
+    padding:12px 14px;
     outline: none;
     border:none;
     margin-bottom: 20px;
     border-radius: 5px;
 }
 
-.authContainer p {
+.link {
     font-size: 16px;
     color:#E22D19;
     margin-top: 20px;
     cursor:pointer;
     text-decoration: underline;
+}
+.msg {
+    font-size: 16px;
+    margin-bottom: 20px;
 }
