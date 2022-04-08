@@ -7,6 +7,8 @@ import { Box, Button } from "@mui/material";
 
 import logo from "assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "features/userSlice";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -23,6 +25,7 @@ function ElevationScroll(props) {
 
 export default function Nav({ isLogin, ...rest }) {
   const navigate = useNavigate();
+  const user = useSelector(selectUser);
 
   return isLogin ? (
     <div
@@ -51,7 +54,7 @@ export default function Nav({ isLogin, ...rest }) {
         variant="contained"
         disableElevation
         color="secondary"
-        onClick={() => navigate("/account")}
+        onClick={() => (user ? navigate("/home") : navigate("/account"))}
       >
         Account
       </Button>
@@ -74,8 +77,15 @@ export default function Nav({ isLogin, ...rest }) {
                 }}
               />
               <Box sx={{ flexGrow: "1" }} />
-              <Button variant="contained" disableElevation color="secondary">
-                Login
+              <Button
+                onClick={() =>
+                  user ? navigate("/profile") : navigate("/account")
+                }
+                variant="contained"
+                disableElevation
+                color="secondary"
+              >
+                {user ? "Profile" : "Account"}
               </Button>
             </Toolbar>
           </Box>

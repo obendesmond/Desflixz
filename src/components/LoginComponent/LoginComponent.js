@@ -25,9 +25,13 @@ export default function LoginComponent() {
       signInWithEmailAndPassword(auth, email, password)
         .then(user => {
           setLoading(false);
+          reset();
           navigate("/home");
         })
-        .catch(err => handleMessage(err.message, setError));
+        .catch(err => {
+          handleMessage(err.message, setError);
+          reset();
+        });
   };
 
   const handleRegister = () => {
@@ -40,9 +44,13 @@ export default function LoginComponent() {
         .then(user => {
           setLoading(false);
           handleMessage("registration successful. Please login!", setSuccess);
+          reset();
           setLogin(true);
         })
-        .catch(err => handleMessage(err.message, setError));
+        .catch(err => {
+          handleMessage(err.message, setError);
+          reset();
+        });
   };
 
   const handleMessage = (msg, setData) => {
@@ -52,7 +60,11 @@ export default function LoginComponent() {
       setData("");
     }, 5000);
   };
-
+  const reset = () => {
+    setEmail("");
+    setPassword("");
+    setRePassword("");
+  };
   return (
     <div className="authContainer">
       <p className="msg" style={{ color: error ? "yellow" : "green" }}>

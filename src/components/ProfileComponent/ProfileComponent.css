@@ -1,0 +1,50 @@
+.profileContainer {
+    /* border: 2px solid red; */
+    width:50%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.profileTitle, .planTitle {
+    color:white;
+    text-align: left;
+}
+
+.emailInput {
+    padding:12px 14px;
+    outline: none;
+    border:none;
+    width:95%;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.subscriptionContainer {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding:20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+.renewDate {
+    color:white;
+    text-align: left;
+    font-size: 14px;
+    margin: -20px 0 20px 0;
+    
+}
+
+.subContainer {
+    display: flex;
+    justify-content: space-between;
+    color:white;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.subTitle p {
+    font-size: 12px;
+}

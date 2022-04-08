@@ -47,7 +47,7 @@ function Banner() {
               startIcon={<PlayCircleFilledWhiteOutlinedIcon />}
               disableElevation
               variant="contained"
-              color="primary"
+              color="secondary"
             >
               Play
             </Button>
